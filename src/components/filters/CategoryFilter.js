@@ -12,11 +12,11 @@ const drinksCategories = [
   "Beer",
   "Soft Drink",
 ];
-const CategoryFilter = () => {
+const CategoryFilter = ({categoryFilter, handleChangeFilter}) => {
   return (
     <div>
       <label>Category:</label>
-      <select>
+      <select value={categoryFilter} onChange={(e) => handleChangeFilter(e)}>
         <option>All</option>
         {drinksCategories.map((drinkCategory, index) => (
           <option key={index}>{drinkCategory}</option>
