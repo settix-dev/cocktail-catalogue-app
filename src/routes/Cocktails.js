@@ -17,6 +17,7 @@ const Cocktails = () => {
   const [categoryFilter, setCategoryFilter] = useState("");
   const [glassFilter, setGlassFilter] = useState("");
   const [alcoholFilter, setAlcoholFilter] = useState("");
+  const [currentFilter, setCurrentFilter] = useState("");
   const cocktails = useSelector(cocktailsState).cocktails;
   const dispatch = useDispatch();
   const currentCategoryFilter = useSelector(categoryFilterState).drinkCategory;
@@ -31,22 +32,25 @@ const Cocktails = () => {
   const handleCategoryChangeFilter = (e) => {
     console.log(`Category filter: ${e.target.value}`);
     setCategoryFilter(e.target.value === "All" ? "" : e.target.value);
+    setCurrentFilter(e.target.value === "All" ? "" : e.target.value);
   };
 
   const handleGlassChangeFilter = (e) => {
     console.log(`Glass Filter: ${e.target.value}`);
     setGlassFilter(e.target.value === "All" ? "" : e.target.value);
+    setCurrentFilter(e.target.value === "All" ? "" : e.target.value);
   };
 
   const handleAlcoholChangeFilter = (e) => {
     console.log(`Alcohol Filter: ${e.target.value}`);
     setAlcoholFilter(e.target.value === "All" ? "" : e.target.value);
+    setCurrentFilter(e.target.value === "All" ? "" : e.target.value);
   };
 
   useEffect(() => {
     if (cocktails.length === 0) {
       // dispatch(fetchCocktails());
-      fetchCocktails(dispatch)
+      fetchCocktails(dispatch);
     }
   }, []);
 
@@ -75,7 +79,7 @@ const Cocktails = () => {
         handleGlassChangeFilter={handleGlassChangeFilter}
       />
       {cocktails.length !== 0 ? (
-        alcoholFilter === "" ? (
+        currentFilter === "" ? (
           cocktails.map((cocktail, index) => (
             <div key={index}>
               {cocktail.drinks.map((drink, index) => (
@@ -94,7 +98,10 @@ const Cocktails = () => {
             <div key={index}>
               {cocktail.drinks
                 .filter(
-                  (drink, index) => drink.strAlcoholic === currentAlcoholFilter
+                  (drink, index) =>
+                    currentFilter === drink.strAlcoholic ||
+                    currentFilter === drink.strGlass ||
+                    currentFilter === drink.strCategory
                 )
                 .map((drink, index) => (
                   <div key={index}>
