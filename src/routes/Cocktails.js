@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import CocktailFilters from "../components/filters/CocktailFilters";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCocktails } from "../store/actions/cocktailsApiActions";
+import loader from "../assets/loading-loader.gif";
 import {
   changeFilterCategory,
   changeFilterGlass,
@@ -43,7 +44,10 @@ const Cocktails = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchCocktails());
+    if (cocktails.length === 0) {
+      // dispatch(fetchCocktails());
+      fetchCocktails(dispatch)
+    }
   }, []);
 
   useEffect(() => {
@@ -70,13 +74,14 @@ const Cocktails = () => {
         handleCategoryChangeFilter={handleCategoryChangeFilter}
         handleGlassChangeFilter={handleGlassChangeFilter}
       />
-      {alcoholFilter === ""
-        ? cocktails.map((cocktail, index) => (
+      {cocktails.length !== 0 ? (
+        alcoholFilter === "" ? (
+          cocktails.map((cocktail, index) => (
             <div key={index}>
               {cocktail.drinks.map((drink, index) => (
                 <div key={index}>
-                  {drink.idDrink}: {drink.strGlass}, {drink.strDrinkThumb},{" "}
-                  {drink.strCategory}
+                  {drink.idDrink}: {drink.strGlass}, {drink.strCategory}
+                  <img src={`${drink.strDrinkThumb}`} alt="Cocktail Thumb" />
                   <Link to={`/cocktail/${drink.strDrink}`}>
                     {drink.strDrink}
                   </Link>
@@ -84,7 +89,8 @@ const Cocktails = () => {
               ))}
             </div>
           ))
-        : cocktails.map((cocktail, index) => (
+        ) : (
+          cocktails.map((cocktail, index) => (
             <div key={index}>
               {cocktail.drinks
                 .filter(
@@ -93,12 +99,19 @@ const Cocktails = () => {
                 .map((drink, index) => (
                   <div key={index}>
                     {drink.idDrink}: {drink.strGlass}, {drink.strDrinkThumb},{" "}
-                    {drink.strCategory}
+                    <img src={`${drink.strDrinkThumb}`} alt="Cocktail Thumb" />
                     <Link to={"/cocktail"}>{drink.strDrink}</Link>
                   </div>
                 ))}
             </div>
-          ))}
+          ))
+        )
+      ) : (
+        <div>
+          <img src={loader} alt="Loading" />
+        </div>
+      )}
+      {}
     </div>
   );
 };
