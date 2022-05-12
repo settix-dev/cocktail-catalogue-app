@@ -66,14 +66,12 @@ const CocktailFilters = ({
         value={categoryFilter}
         onChange={(e) => handleCategoryChangeFilter(e)}
       >
-        <option>All</option>
         {drinksCategories.map((drinkCategory, index) => (
           <option key={index}>{drinkCategory}</option>
         ))}
       </select>
       <label>Glass:</label>
       <select value={glassFilter} onChange={(e) => handleGlassChangeFilter(e)}>
-        <option>All</option>
         {drinksGlasses.map((drinkGlass, index) => (
           <option key={index}>{drinkGlass}</option>
         ))}
@@ -83,7 +81,6 @@ const CocktailFilters = ({
         value={alcoholFilter}
         onChange={(e) => handleAlcoholChangeFilter(e)}
       >
-        <option>All</option>
         {drinksAlcoholContent.map((drinkAlcoholicContent, index) => (
           <option key={index}>{drinkAlcoholicContent}</option>
         ))}
