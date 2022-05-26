@@ -32,28 +32,43 @@ const Cocktail = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Cocktail: {cocktailName}</h1>
+    <div className="cocktail-drink">
+      <h3 className="h3 p-3 text-muted fst-italic">{cocktailName}</h3>
       {cocktails.map((cocktail, index) => (
-        <div key={index}>
+        <div
+          key={index}
+          className=" d-flex align-item-center justify-content-center"
+        >
           {cocktail.drinks.map((drink, index) => (
-            <div key={index}>
+            <div className="" key={index}>
               {drink.strDrink === cocktailName ? (
-                <div>
-                  <img src={drink.strDrinkThumb} alt="Cocktail Thumb" />
-                  <h3>Cocktail Details</h3>
-                  <ul>
-                    <li>Drink Name: {drink.strDrink}</li>
-                    <li>Glass Type: {drink.strGlass}</li>
-                    <li>Ingredient 1: {drink.strIngredient1}</li>
-                    <li>Ingredient 2: {drink.strIngredient2}</li>
-                    <li>Ingredient 3: {drink.strIngredient3}</li>
-                    <li>Ingredient 4: {drink.strIngredient4}</li>
-                    <li>Measure 1: {drink.strMeasure1}</li>
-                    <li>Measure 2: {drink.strMeasure2}</li>
-                    <li>Measure 3: {drink.strMeasure3}</li>
-                    <li>Measure 4: {drink.strMeasure4}</li>
-                  </ul>
+                <div className="card w-100 cocktail-card">
+                  <img
+                    src={drink.strDrinkThumb}
+                    className="card-img-top"
+                    alt="Cocktail Thumb"
+                  />
+                  <div className="card-body">
+                    <h3>Cocktail Details</h3>
+                    <ul>
+                      <li>Drink Name: {drink.strDrink}</li>
+                      <li>Glass Type: {drink.strGlass}</li>
+                      <li>Ingredient 1: {drink.strIngredient1}</li>
+                      <li>Ingredient 2: {drink.strIngredient2}</li>
+                      <li>Ingredient 3: {drink.strIngredient3}</li>
+                      <li>Ingredient 4: {drink.strIngredient4}</li>
+                      <li>Measure 1: {drink.strMeasure1}</li>
+                      <li>Measure 2: {drink.strMeasure2}</li>
+                      <li>Measure 3: {drink.strMeasure3}</li>
+                      <li>Measure 4: {drink.strMeasure4}</li>
+                    </ul>
+                    <p>
+                      For more details visit
+                      <Link
+                        to={`/cocktailDetails/${cocktailName}`}
+                      >{`${cocktailName}Details`}</Link>
+                    </p>
+                  </div>
                 </div>
               ) : (
                 ""
@@ -62,12 +77,6 @@ const Cocktail = () => {
           ))}
         </div>
       ))}
-      <p>
-        For more details visit
-        <Link
-          to={`/cocktailDetails/${cocktailName}`}
-        >{`${cocktailName}Details`}</Link>
-      </p>
     </div>
   );
 };

@@ -60,18 +60,23 @@ const CocktailFilters = ({
   handleGlassChangeFilter,
 }) => {
   return (
-    <div>
+    <div className="d-flex justify-content-center text-secondary my-4">
       <label>Category:</label>
       <select
         value={categoryFilter}
         onChange={(e) => handleCategoryChangeFilter(e)}
+        className="form-select form-select-sm mb-3 text-secondary filter-select"
       >
         {drinksCategories.map((drinkCategory, index) => (
           <option key={index}>{drinkCategory}</option>
         ))}
       </select>
-      <label>Glass:</label>
-      <select value={glassFilter} onChange={(e) => handleGlassChangeFilter(e)}>
+      <label className="ms-3">Glass:</label>
+      <select
+        value={glassFilter}
+        onChange={(e) => handleGlassChangeFilter(e)}
+        className="form-select form-select-sm mb-3 text-secondary filter-select me-3"
+      >
         {drinksGlasses.map((drinkGlass, index) => (
           <option key={index}>{drinkGlass}</option>
         ))}
@@ -80,6 +85,7 @@ const CocktailFilters = ({
       <select
         value={alcoholFilter}
         onChange={(e) => handleAlcoholChangeFilter(e)}
+        className="form-select form-select-sm mb-3 text-secondary filter-select"
       >
         {drinksAlcoholContent.map((drinkAlcoholicContent, index) => (
           <option key={index}>{drinkAlcoholicContent}</option>

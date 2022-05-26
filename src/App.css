@@ -1,0 +1,87 @@
+body {
+  background-color: #ece5da;
+}
+
+.App {
+  background-image: url("./assets/cocktail-1.png");
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.navbar-main {
+  background-color: #48484a;
+  color: #f2f2f2;
+  z-index: 4;
+}
+
+.navbar-brand-h1 {
+  font-size: 30px;
+  font-weight: 200;
+}
+
+.nav-link-page {
+  color: #f2f2f2;
+}
+
+.cocktails-main-dev {
+  background-color: rgba(236, 229, 218, 0.7);
+}
+
+.cocktails-drinks {
+  box-shadow: 10px 10px 15px -5px rgba(0, 0, 0, 0.5);
+  background-color: #f1ebe5;
+}
+
+.cocktail-select {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  width: 200px;
+  border-radius: 3px;
+  font-size: 15px;
+  background-color: transparent;
+}
+
+.filter-select {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  width: 200px;
+  border-radius: 3px;
+  font-size: 15px;
+}
+
+.home-img-bg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.home-style {
+  min-height: 100vh;
+  max-height: 100vh;
+  background-color: rgba(236, 229, 218, 0);
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+.lamex-h2 {
+  font-size: 11em;
+  text-shadow: 0 13.36px 8.896px #c4b59d, 0 -2px 1px #fff;
+  color: #f1ebe5;
+  text-transform: uppercase;
+  letter-spacing: -10px;
+}
+
+.cocktail-drink {
+  background-color: rgba(236, 229, 218, 0.7);
+}
+
+.cocktail-card {
+  box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.4);
+}
